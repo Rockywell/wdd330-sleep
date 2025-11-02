@@ -5,6 +5,9 @@ export function qs(selector, parent = document) {
 // or a more concise version if you are into that sort of thing:
 // export const qs = (selector, parent = document) => parent.querySelector(selector);
 
+
+//Local Storage
+
 // retrieve data from localstorage
 export function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
@@ -22,6 +25,9 @@ export function addLocalStorage(key, ...data) {
   setLocalStorage(key, combinedData);
 }
 
+
+//Event Listener
+
 // set a listener for both touchend and click
 export function setClick(selector, callback) {
   qs(selector).addEventListener("touchend", (event) => {
@@ -29,4 +35,12 @@ export function setClick(selector, callback) {
     callback();
   });
   qs(selector).addEventListener("click", callback);
+}
+
+
+export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
+  if (clear) parentElement.replaceChildren();
+
+  let listTemplate = list.map(templateFn).join('');
+  parentElement.insertAdjacentHTML(position, listTemplate);
 }
