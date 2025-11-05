@@ -13,6 +13,15 @@ export function getLocalStorage(key) {
 export function setLocalStorage(key, data) {
   localStorage.setItem(key, JSON.stringify(data));
 }
+// adds one or multiple data items to a local storage array
+export function addLocalStorage(key, ...data) {
+  let storage = getLocalStorage(key) ?? [];
+
+  const combinedData = [].concat(storage, data);
+
+  setLocalStorage(key, combinedData);
+}
+
 // set a listener for both touchend and click
 export function setClick(selector, callback) {
   qs(selector).addEventListener("touchend", (event) => {
