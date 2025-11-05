@@ -44,3 +44,10 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   let listTemplate = list.map(templateFn).join('');
   parentElement.insertAdjacentHTML(position, listTemplate);
 }
+export function getParam() {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const product = urlParams.get('product');
+
+  return product;
+}
