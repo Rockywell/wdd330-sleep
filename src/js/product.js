@@ -5,12 +5,13 @@ import ProductDetails from "./ProductDetails.mjs";
 const dataSource = new ProductData("tents");
 const productId = getParam("product");
 
+const product = new ProductDetails(productId, dataSource);
+product.init();
+
+// add product to cart
 function addProductToCart() {
   addLocalStorage("so-cart");
 }
-
-const product = new ProductDetails(productId, dataSource);
-product.init();
 
 // add to cart button event handler
 async function addToCartHandler(e) {

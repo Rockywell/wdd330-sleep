@@ -1,9 +1,37 @@
+//HTML Functions
+
 // wrapper for querySelector...returns matching element
-export function qs(selector, parent = document) {
-  return parent.querySelector(selector);
+export const qs = (selector, parent = document) => parent.querySelector(selector);
+
+// set a listener for both touchend and click
+export function setClick(selector, callback) {
+  qs(selector).addEventListener("touchend", (event) => {
+    event.preventDefault();
+    callback();
+  });
+  qs(selector).addEventListener("click", callback);
 }
-// or a more concise version if you are into that sort of thing:
-// export const qs = (selector, parent = document) => parent.querySelector(selector);
+
+export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
+  if (clear) parentElement.replaceChildren();
+
+  let listTemplate = list.map(templateFn).join('');
+  parentElement.insertAdjacentHTML(position, listTemplate);
+}
+
+
+//Window Functions
+
+export function getParam() {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const product = urlParams.get('product');
+
+  return product;
+}
+
+
+//Local Storage
 
 // retrieve data from localstorage
 export function getLocalStorage(key) {
@@ -20,21 +48,4 @@ export function addLocalStorage(key, ...data) {
   const combinedData = [].concat(storage, data);
 
   setLocalStorage(key, combinedData);
-}
-
-// set a listener for both touchend and click
-export function setClick(selector, callback) {
-  qs(selector).addEventListener("touchend", (event) => {
-    event.preventDefault();
-    callback();
-  });
-  qs(selector).addEventListener("click", callback);
-}
-
-export function getParam() {
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  const product = urlParams.get('product');
-
-  return product;
 }
