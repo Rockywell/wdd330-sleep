@@ -3,7 +3,7 @@ import { addLocalStorage } from "./utils.mjs";
 export default class ProductDetails {
     constructor(productId, dataSource) {
         this.productId = productId;
-        this.z = {};
+        this.product = {};
         this.dataSource = dataSource;
     }
     async init() {

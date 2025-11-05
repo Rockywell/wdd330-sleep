@@ -32,6 +32,3 @@ function cartItemTemplate(item) {
 }
 
 renderCartContents();
-
-
-
