@@ -3,17 +3,15 @@ import { getLocalStorage } from "./utils.mjs";
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") ?? [];
 
-  // ✅ If cart is empty, show a message and stop
+  // If cart is empty, show a message and stop
   if (cartItems.length === 0) {
     document.querySelector(".product-list").innerHTML = `
       <p class="empty-cart">Your cart is currently empty.</p>
     `;
-    return;
+  } else {
+    const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+    document.querySelector(".product-list").innerHTML = htmlItems.join("");
   }
-
-  // Otherwise, build cart items
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
 
 function cartItemTemplate(item) {
