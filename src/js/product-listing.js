@@ -1,10 +1,10 @@
+import { getParam } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 import ProductList from "./ProductList.mjs";
 
-// const template = document.querySelector(".product-card");
+const category = getParam("category");
+const dataSource = new ProductData();
 const productList = document.querySelector(".product-list");
 
-const tentSource = new ProductData("tents");
-
-const tents = new ProductList("Tents", tentSource, productList);
-tents.init();
+const listing = new ProductList(category, dataSource, productList);
+listing.init();

@@ -22,12 +22,11 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
 
 //Window Functions
 
-export function getParam() {
+export function getParam(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
-  const product = urlParams.get('product');
 
-  return product;
+  return urlParams.get(param);
 }
 
 
