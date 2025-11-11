@@ -1,10 +1,7 @@
-import ProductData from "./ProductData.mjs";
-import ProductList from "./ProductList.mjs";
+function updateCartCount() {
+  const cartCountElement = document.querySelector('.cart-count');
+  const cart = getLocalStorage("so-cart") ?? [];
+  cartCountElement.textContent = cart.length;
+}
 
-// const template = document.querySelector(".product-card");
-const productList = document.querySelector(".product-list");
-
-const tentSource = new ProductData("tents");
-
-const tents = new ProductList("Tents", tentSource, productList);
-tents.init();
+document.addEventListener('DOMContentLoaded', updateCartCount);
