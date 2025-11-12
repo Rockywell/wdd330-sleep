@@ -1,6 +1,6 @@
 import { getLocalStorage, renderListWithTemplate } from "./utils.mjs";
 
- function cartItemTemplate(item) {
+function cartItemTemplate(item) {
     return `
 <li class="cart-card divider">
   <a href="#" class="cart-card__image">
@@ -16,22 +16,21 @@ import { getLocalStorage, renderListWithTemplate } from "./utils.mjs";
 }
 
 export default class ShoppingCart {
+    static allItems = getLocalStorage("so-cart") ?? [];
 
-    constructor(cartItems = getLocalStorage("so-cart") ?? [], productList = document.querySelector(".product-list")) {
-        this.cartItems = cartItems;
+    constructor(cartItems, productList = document.querySelector(".product-list")) {
+        this.cartItems = cartItems ?? ShoppingCart.allItems;
         this.productList = productList;
-        // this.caqtegory
+        // this.category
     }
 
     init() {
         this.renderCartContents();
-        this.updateCartCount();
-
     }
 
-     renderCartContents() {
+    renderCartContents() {
         // If cart is empty, show a message and stop
-        
+
 
         if (this.cartItems.length === 0) {
             this.productList.innerHTML = `<p class="empty-cart">Your cart is currently empty.</p>`;
@@ -41,8 +40,8 @@ export default class ShoppingCart {
             const cartFooter = document.querySelector(".cart-footer");
             const cartTotal = document.querySelector(".cart-total");
 
-            // this.productList.innerHTML = this.cartItems.map(item => cartItemTemplate(item)).join('');
-            renderListWithTemplate(cartItemTemplate(), this.productList, this.cartItems) ;
+
+            renderListWithTemplate(cartItemTemplate, this.productList, this.cartItems);
             cartTotal.textContent = `($${total})`;
             cartFooter.classList.toggle("hide");
         }
@@ -50,12 +49,10 @@ export default class ShoppingCart {
 
 
 
-     updateCartCount() {
+    static updateCartCount() {
+        ShoppingCart.allItems = getLocalStorage("so-cart") ?? [];
+
         const cartCountElement = document.querySelector('.cart-count');
-        cartCountElement.textContent = this.cartItems.length;
+        cartCountElement.textContent = ShoppingCart.allItems.length;
     }
-
-
-    //renderCartContents();
-    //ocument.addEventListener('DOMContentLoaded', updateCartCount);
 }
