@@ -1,4 +1,5 @@
 import { addLocalStorage } from "./utils.mjs";
+import ShoppingCart from "./ShoppingCart.mjs";
 
 export default class ProductDetails {
     constructor(productId, dataSource) {
@@ -14,6 +15,7 @@ export default class ProductDetails {
     }
     addProductToCart() {
         addLocalStorage("so-cart", this.product);
+        ShoppingCart.updateCartCount();
     }
     renderProductDetails() {
         productDetailsTemplate(this.product);
