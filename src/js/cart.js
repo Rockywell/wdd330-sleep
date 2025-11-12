@@ -42,4 +42,5 @@ function updateCartCount() {
 }
 
 
-document.addEventListener('DOMContentLoaded', renderCartContents, updateCartCount);
+renderCartContents();
+document.addEventListener('DOMContentLoaded', updateCartCount);
