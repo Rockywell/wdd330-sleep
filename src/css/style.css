@@ -90,13 +90,17 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square > div {
+.logo--square>div {
   margin-top: -1.7em;
 }
 
 /* utility classes */
 .highlight {
   color: var(--tertiary-color);
+}
+
+.hide {
+  visibility: hidden;
 }
 
 button {
@@ -141,6 +145,22 @@ button {
   padding: 2px 6px;
   border-radius: 50%;
   font-weight: bold;
+}
+
+.cart-total::before {
+  content: "Total: ";
+}
+
+.cart-total {
+  font-size: var(--large-font);
+  padding: 10px;
+}
+
+.cart-footer {
+  background: var(--light-grey);
+  border: 2px solid var(--primary-color);
+  margin-top: 1rem;
+  padding: 1rem;
 }
 
 /* End cart icon styles */

@@ -1,16 +1,23 @@
 import { getLocalStorage } from "./utils.mjs";
 
-function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart") ?? [];
+const cartItems = getLocalStorage("so-cart") ?? [];
 
+
+function renderCartContents() {
   // If cart is empty, show a message and stop
+  const productList = document.querySelector(".product-list");
+
   if (cartItems.length === 0) {
-    document.querySelector(".product-list").innerHTML = `
-      <p class="empty-cart">Your cart is currently empty.</p>
-    `;
+    productList.innerHTML = `<p class="empty-cart">Your cart is currently empty.</p>`;
   } else {
-    const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-    document.querySelector(".product-list").innerHTML = htmlItems.join("");
+    let total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
+
+    const cartFooter = document.querySelector(".cart-footer");
+    const cartTotal = document.querySelector(".cart-total");
+
+    productList.innerHTML = cartItems.map(item => cartItemTemplate(item)).join('');
+    cartTotal.textContent = `($${total})`;
+    cartFooter.classList.toggle("hide");
   }
 }
 
@@ -29,13 +36,10 @@ function cartItemTemplate(item) {
 </li>`;
 }
 
-renderCartContents();
-
 function updateCartCount() {
   const cartCountElement = document.querySelector('.cart-count');
-  const cart = getLocalStorage("so-cart") ?? [];
-  cartCountElement.textContent = cart.length;
+  cartCountElement.textContent = cartItems.length;
 }
 
-document.addEventListener('DOMContentLoaded', updateCartCount);
 
+document.addEventListener('DOMContentLoaded', renderCartContents, updateCartCount);
