@@ -14,9 +14,24 @@ export default class ProductDetails {
         document.getElementById('addToCart').addEventListener('click', this.addProductToCart.bind(this));
     }
     addProductToCart() {
-        addLocalStorage("so-cart", this.product);
+        const productToAdd = { ...this.product, quantity: 1 };
+
+        productToAdd.FinalPrice = productToAdd.ListPrice * productToAdd.quantity;
+
+        const cart = JSON.parse(localStorage.getItem("so-cart")) ?? [];
+        const existing = cart.find(item => item.Id === productToAdd.Id);
+
+        if (existing) {
+            existing.quantity += 1;
+            existing.FinalPrice = existing.ListPrice * existing.quantity;
+        } else {
+            cart.push(productToAdd);
+        }
+
+        localStorage.setItem("so-cart", JSON.stringify(cart));
         ShoppingCart.updateCartCount();
     }
+
     renderProductDetails() {
         productDetailsTemplate(this.product);
     }
