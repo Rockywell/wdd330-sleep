@@ -1,0 +1,80 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "title": "Front-End Web Workshop",
+      "date": "2025-12-05",
+      "time": "09:00",
+      "location": "Main Hall A",
+      "short": "Intro to modern front-end development.",
+      "description": "A hands-on workshop covering HTML, CSS, and JavaScript best practices.",
+      "speakers": [
+        1,
+        2
+      ],
+      "tags": [
+        "web",
+        "workshop"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Design Thinking Seminar",
+      "date": "2025-12-06",
+      "time": "11:00",
+      "location": "Conference Room 2",
+      "short": "Learn user-centered design approaches.",
+      "description": "Explore ideation, prototyping, and user-testing in teams.",
+      "speakers": [
+        3
+      ],
+      "tags": [
+        "design",
+        "seminar"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Tech Leadership Panel",
+      "date": "2025-12-07",
+      "time": "14:00",
+      "location": "Auditorium",
+      "short": "Panel discussion with industry leaders.",
+      "description": "An interactive panel focusing on leadership, career growth, and industry trends.",
+      "speakers": [
+        2,
+        4
+      ],
+      "tags": [
+        "panel",
+        "career"
+      ]
+    }
+  ],
+  "speakers": [
+    {
+      "id": 1,
+      "name": "Aisha Bello",
+      "bio": "Frontend engineer with 6 years experience.",
+      "topic": "Modern CSS"
+    },
+    {
+      "id": 2,
+      "name": "Michael Adeyemi",
+      "bio": "Fullstack developer and mentor.",
+      "topic": "JavaScript Patterns"
+    },
+    {
+      "id": 3,
+      "name": "Chinwe Okoro",
+      "bio": "Product designer and facilitator.",
+      "topic": "Design Thinking"
+    },
+    {
+      "id": 4,
+      "name": "Samuel Ojo",
+      "bio": "CTO at TechCo.",
+      "topic": "Leadership in Tech"
+    }
+  ]
+}

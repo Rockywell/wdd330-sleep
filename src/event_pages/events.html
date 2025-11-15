@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Events — Event Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <h1>Events</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="speakers.html">Speakers</a>
+      <a href="schedule.html">Schedule</a>
+      <a href="favorites.html">Favorites</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section>
+      <input id="search" placeholder="Search events (title, tag, location)" />
+      <div id="eventsList" class="cards"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Event Dashboard</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script>
+    // After loading events, render them on this page
+    document.addEventListener('DOMContentLoaded', () => {
+      if (typeof window.renderEvents === 'function') window.renderEvents('#eventsList');
+      const search = document.getElementById('search');
+      search.addEventListener('input', (e) => {
+        window.filterEvents(e.target.value, '#eventsList');
+      });
+    });
+  </script>
+</body>
+</html>
