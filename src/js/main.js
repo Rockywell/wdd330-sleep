@@ -4,7 +4,7 @@ window.appData = { events: [], speakers: [] };
 
 async function loadData(){
   try{
-    const res = await fetch('events.json');
+    const res = await fetch('data/events.json');
     const json = await res.json();
     window.appData = json;
   }catch(e){
