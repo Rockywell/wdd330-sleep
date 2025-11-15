@@ -1,6 +1,10 @@
 
 // main.js - loads data and provides render helpers
 window.appData = { events: [], speakers: [] };
+fetch("events.json")
+  .then(res => res.json())
+  .then(data => console.log(data));
+
 
 async function loadData(){
   try{
