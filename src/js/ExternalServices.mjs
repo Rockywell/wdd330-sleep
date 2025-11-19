@@ -8,7 +8,7 @@ function convertToJson(res) {
   }
 }
 
-export default class ProductData {
+export default class ExternalServices {
   async getData(category) {
     return fetch(`${baseURL}products/search/${category}`)
       .then(convertToJson)
