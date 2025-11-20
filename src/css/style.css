@@ -40,6 +40,62 @@ p {
   padding: 0.75rem;
 }
 
+form {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border: 2px solid var(--tertiary-color);
+  border-radius: 8px;
+  font-family: system-ui, sans-serif;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
+legend {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+label {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.9rem;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 0.4rem 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid var(--light-grey);
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.order-summary {
+  margin: 1rem 0;
+  padding: 0.75rem;
+  border-radius: 6px;
+  background: var(--light-grey);
+}
+
+.order-summary h3 {
+  margin-top: 0;
+}
+
+#checkoutSubmit {
+  width: 100%;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 4px;
+  background: var(--primary-color);
+  color: var(--dark-grey);
+  font-weight: 600;
+}
+
 .logo {
   line-height: 60px;
   width: 245px;
@@ -90,7 +146,7 @@ p {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
