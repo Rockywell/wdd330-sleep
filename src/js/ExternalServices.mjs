@@ -1,6 +1,7 @@
 const baseURL = import.meta.env.VITE_SERVER_URL;
 
 function convertToJson(res) {
+  console.log(res);
   if (res.ok) {
     return res.json();
   } else {
@@ -21,5 +22,19 @@ export default class ExternalServices {
     return fetch(`${baseURL}product/${id}`)
       .then(convertToJson)
       .then((data) => data.Result);
+  }
+
+  async checkout(payload) {
+    let options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    };
+
+    // console.log(payload);
+
+    return await fetch(`${baseURL}checkout/`, options).then(convertToJson)
   }
 }

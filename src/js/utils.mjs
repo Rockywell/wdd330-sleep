@@ -78,8 +78,8 @@ export function addLocalStorage(key, ...data) {
 }
 
 export function formDataToJSON(formElement) {
-  const formData = new FormData(formElement),
-    convertedJSON = {};
+  const formData = new FormData(formElement);
+  const convertedJSON = {};
 
   formData.forEach(function (value, key) {
     convertedJSON[key] = value;

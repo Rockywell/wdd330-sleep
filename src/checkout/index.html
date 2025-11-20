@@ -8,7 +8,7 @@
 
     <title>Sleep Outside | Checkout</title>
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/css/style.css" />
 
     <script src="../js/checkout.js" type="module"></script>
   </head>
@@ -20,11 +20,12 @@
       <section class="products">
         <h2>Review & Place your Order</h2>
       </section>
-      <form>
+      <form name="checkout">
         <fieldset>
           <legend>Personal Information</legend>
-          <input type="text" id="fname" name="fname" value="Gerald" required />
           <label for="fname">First Name:</label>
+          <input type="text" id="fname" name="fname" value="Gerald" required />
+          <label for="lname">Last Name:</label>
           <input
             type="text"
             id="lname"
@@ -32,27 +33,27 @@
             value="Fitzherbert"
             required
           />
-          <label for="lname">Last Name:</label>
         </fieldset>
         <fieldset>
           <legend>Shipping Information</legend>
+          <label for="street">Street Address:</label>
           <input
             type="text"
-            id="address"
-            name="address"
-            value="123 Main St"
+            id="street"
+            name="street"
+            value="123 Main"
             required
           />
-          <label for="address">Address:</label>
-          <input type="text" id="city" name="city" value="Anytown" required />
           <label for="city">City:</label>
-          <input type="text" id="state" name="state" value="CA" required />
+          <input type="text" id="city" name="city" value="Anytown" required />
           <label for="state">State:</label>
-          <input type="text" id="zip" name="zip" value="12345" required />
+          <input type="text" id="state" name="state" value="CA" required />
           <label for="zip">Zip Code:</label>
+          <input type="text" id="zip" name="zip" value="12345" required />
         </fieldset>
         <fieldset>
           <legend>Payment Information</legend>
+          <label for="cardNumber">Credit Card Number:</label>
           <input
             type="text"
             id="cardNumber"
@@ -60,7 +61,7 @@
             value="1234123412341234"
             required
           />
-          <label for="cardNumber">Credit Card Number:</label>
+          <label for="expiration">Expiration Date:</label>
           <input
             type="text"
             id="expiration"
@@ -68,16 +69,15 @@
             value="12/28"
             required
           />
-          <label for="expiration">Expiration Date:</label>
-          <input type="text" id="code" name="code" value="123" required />
           <label for="code">CVV:</label>
+          <input type="text" id="code" name="code" value="123" required />
         </fieldset>
         <div class="order-summary">
           <h3>Order Summary</h3>
-          <p class="orderTotal">Subtotal:</p>
-          <p class="tax">Tax:</p>
-          <p class="shipping">Shipping Estimate:</p>
-          <p class="final-total">Order Total:</p>
+          <p class="orderTotal">Subtotal: <span></span></p>
+          <p class="tax">Tax: <span></span></p>
+          <p class="shipping">Shipping Estimate: <span></span></p>
+          <p class="final-total">Order Total: <span></span></p>
         </div>
         <button type="submit" id="checkoutSubmit">Place Order</button>
       </form>
