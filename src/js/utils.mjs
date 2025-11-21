@@ -48,6 +48,32 @@ export async function loadHeaderFooter() {
   ShoppingCart.updateCartCount();
 }
 
+//Alert messages
+export function alertMessage(message, scroll = true) {
+  const alert = document.createElement('div');
+
+  alert.classList.add('alert');
+  alert.innerHTML = `<p>${message}</p><span>X</span>`;
+
+
+  alert.addEventListener('click', function (e) {
+    if (e.target.tagName == "SPAN") { // how can you tell if they clicked on the X or on something else?  hint: check out e.target.tagName or e.target.innerText
+      main.removeChild(this);
+    }
+  })
+
+  const main = document.querySelector('main');
+  main.prepend(alert);
+
+  if (scroll)
+    window.scrollTo(0, 0);
+}
+
+export function removeAllAlerts() {
+  const alerts = document.querySelectorAll(".alert");
+  alerts.forEach((alert) => document.querySelector("main").removeChild(alert));
+}
+
 //Window Functions
 
 export function getParam(param) {

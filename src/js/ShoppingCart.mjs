@@ -1,4 +1,4 @@
-import { getLocalStorage, renderListWithTemplate } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, renderListWithTemplate } from "./utils.mjs";
 
 function cartItemTemplate(item) {
     return `
@@ -16,7 +16,7 @@ function cartItemTemplate(item) {
 }
 
 export default class ShoppingCart {
-    static allItems = getLocalStorage("so-cart") ?? [];
+    static get allItems() { return getLocalStorage("so-cart") ?? [] };
 
     constructor(cartItems, productList = document.querySelector(".product-list")) {
         this.cartItems = cartItems ?? ShoppingCart.allItems;
@@ -48,11 +48,13 @@ export default class ShoppingCart {
     }
 
 
-
     static updateCartCount() {
-        ShoppingCart.allItems = getLocalStorage("so-cart") ?? [];
-
         const cartCountElement = document.querySelector('.cart-count');
         cartCountElement.textContent = ShoppingCart.allItems.length;
+    }
+
+    static emptyCart() {
+        setLocalStorage("so-cart", []);
+        ShoppingCart.updateCartCount();
     }
 }

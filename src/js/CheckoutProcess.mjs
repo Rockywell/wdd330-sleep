@@ -1,6 +1,12 @@
+import {
+    formDataToJSON,
+    setLocalStorage,
+    alertMessage,
+    removeAllAlerts
+} from './utils.mjs';
+
 import ShoppingCart from './ShoppingCart.mjs';
 import ExternalServices from './ExternalServices.mjs';
-import { formDataToJSON } from './utils.mjs';
 
 const checkoutServices = new ExternalServices();
 
@@ -101,8 +107,14 @@ export default class CheckoutProcess {
 
         try {
             const response = await checkoutServices.checkout(order);
-            console.log(response);
+            ShoppingCart.emptyCart();
+            location.assign("/checkout/success.html");
         } catch (err) {
+            removeAllAlerts();
+            for (let message in err.message) {
+                alertMessage(err.message[message]);
+            }
+
             console.log(err);
         }
     }
