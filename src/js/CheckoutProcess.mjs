@@ -1,6 +1,5 @@
 import {
     formDataToJSON,
-    setLocalStorage,
     alertMessage,
     removeAllAlerts
 } from './utils.mjs';
@@ -13,7 +12,7 @@ const checkoutServices = new ExternalServices();
 let formatCurrency = (value) => `$${value.toFixed(2)}`;
 
 export default class CheckoutProcess {
-    static allItems = ShoppingCart.allItems;
+    static items = ShoppingCart.list;
 
     constructor(outputSelector) {
         //this.key = key;
@@ -32,12 +31,12 @@ export default class CheckoutProcess {
     }
 
     get itemTotal() {
-        return CheckoutProcess.allItems.reduce((sum, item) => sum + item.FinalPrice, 0);
+        return ShoppingCart.totalPrice
     }
 
     get shipping() {
-        return 10 + (CheckoutProcess.allItems.length > 1 ?
-            (CheckoutProcess.allItems.length - 1) * 2
+        return 10 + (CheckoutProcess.items.length > 1 ?
+            (CheckoutProcess.items.length - 1) * 2
             :
             0);
     }
@@ -49,7 +48,7 @@ export default class CheckoutProcess {
 
     init() {
         this.displayOrderTotals();
-        console.log('Checkout process initialized');
+        // console.log('Checkout process initialized');
     }
 
 
@@ -81,7 +80,7 @@ export default class CheckoutProcess {
 
     packageItems() {
 
-        return CheckoutProcess.allItems.map(item => {
+        return CheckoutProcess.items.map(item => {
             return {
                 id: item.Id,
                 price: item.FinalPrice,
@@ -108,6 +107,7 @@ export default class CheckoutProcess {
         try {
             const response = await checkoutServices.checkout(order);
             ShoppingCart.emptyCart();
+            ShoppingCart.updateCartCount();
             location.assign("/checkout/success.html");
         } catch (err) {
             removeAllAlerts();
