@@ -1,4 +1,4 @@
-import { addLocalStorage } from "./utils.mjs";
+import { addLocalStorage, setLocalStorage } from "./utils.mjs";
 import ShoppingCart from "./ShoppingCart.mjs";
 
 export default class ProductDetails {
@@ -14,9 +14,10 @@ export default class ProductDetails {
         document.getElementById('addToCart').addEventListener('click', this.addProductToCart.bind(this));
     }
     addProductToCart() {
-        addLocalStorage("so-cart", this.product);
+        ShoppingCart.addCart(this.product);
         ShoppingCart.updateCartCount();
     }
+
     renderProductDetails() {
         productDetailsTemplate(this.product);
     }
