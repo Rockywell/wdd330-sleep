@@ -1,5 +1,6 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
+
 export default class ProductDetails {
 
   constructor(productId, dataSource) {
@@ -31,6 +32,7 @@ export default class ProductDetails {
   }
 }
 
+
 function productDetailsTemplate(product) {
   document.querySelector('h2').textContent = product.Brand.Name;
   document.querySelector('h3').textContent = product.NameWithoutBrand;
@@ -45,6 +47,11 @@ function productDetailsTemplate(product) {
 
   document.getElementById('addToCart').dataset.id = product.Id;
 }
+
+import { alertMessage } from "../utils.mjs";
+
+alertMessage("Item added to cart!", false);
+
 
 // ************* Alternative Display Product Details Method *******************
 // function productDetailsTemplate(product) {

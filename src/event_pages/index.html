@@ -1,53 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Event Management Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Dashboard</title>
     <link rel="stylesheet" href="../css/main.css">
 <script src="../js/main.js" type="module"></script>
 
-
 </head>
 <body>
-  <header class="site-header">
-    <h1>Event Dashboard</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="events.html">Events</a>
-      <a href="speakers.html">Speakers</a>
-      <a href="schedule.html">Schedule</a>
-      <a href="favorites.html">Favorites</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
 
-  <main class="container">
-    <section class="hero">
-      <h2>Welcome to the Event Management Dashboard</h2>
-      <p>Explore upcoming events, view speakers, and save favorites.</p>
-      <a class="btn" href="events.html">Browse Events</a>
-    </section>
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <div class="logo">Event Dashboard</div>
 
-    <section class="highlights">
-      <article>
-        <h3>Featured Event</h3>
-        <p>Front-End Web Workshop — 5 Dec 2025</p>
-      </article>
-      <article>
-        <h3>Speakers</h3>
-        <p>Meet industry experts and thought leaders.</p>
-      </article>
-      <article>
-        <h3>Schedule</h3>
-        <p>View session times and plan your day.</p>
-      </article>
-    </section>
-  </main>
+        <nav>
+            <ul id="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">Speakers</a></li>
+                <li><a href="#">Schedule</a></li>
+                <li><a href="#">Favorites</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
 
-  <footer>
-    <p>&copy; 2025 Event Dashboard</p>
-  </footer>
+            <!-- MOBILE MENU BUTTON -->
+            <button id="menu-btn">☰</button>
 
+            <!-- DARK MODE BUTTON -->
+            <button id="dark-toggle">🌙</button>
+        </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="container fade-in">
+        <h1>Welcome to the Event Management Dashboard</h1>
+        <p>Explore upcoming events, view speakers, and save favorites.</p>
+        <a href="#" class="browse-link">Browse Events</a>
+
+        <section id="dynamic-content"></section>
+    </main>
+
+    <footer>
+        © 2025 Event Dashboard
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>

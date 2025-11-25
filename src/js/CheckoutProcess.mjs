@@ -1,5 +1,8 @@
 import ExternalServices from "./ExternalServices.mjs";
 import { getLocalStorage } from "./utils.mjs";
+import ExternalServices from "./ExternalServices.js";
+
+const services = new ExternalServices();
 
 export default class CheckoutProcess {
   constructor(key, outputSelector) {
@@ -16,6 +19,7 @@ export default class CheckoutProcess {
     this.subtotal = subtotal;
   }
 
+  
   // Calculate tax, shipping, total
   calculateOrderTotal() {
     const tax = this.subtotal * 0.06;
@@ -29,7 +33,20 @@ export default class CheckoutProcess {
     this.tax = tax;
     this.shipping = shipping;
     this.orderTotal = total;
+
   }
+
+  async checkout(form) {
+  try {
+    // (1) Create order object  
+    // (2) Send to ExternalServices.checkout  
+    // (3) Handle success → redirect to success page
+  }
+  catch (err) {
+    // err.message contains the server JSON
+    alertMessage("Order failed: " + err.message.error);
+  }
+}
 
   // Convert cart items for checkout object
   packageItems(items) {
@@ -56,3 +73,4 @@ export default class CheckoutProcess {
     return response;
   }
 }
+
