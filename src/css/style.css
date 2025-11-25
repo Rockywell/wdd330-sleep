@@ -231,6 +231,15 @@ button {
   grid-column: 2;
 }
 
+.alert-message {
+  padding: 12px;
+  margin-bottom: 10px;
+  color: #333;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
 .cart-card__quantity {
   grid-row: 1;
   grid-column: 3;
