@@ -1,0 +1,28 @@
+{
+  "speakers": [
+    {
+      "id": 1,
+      "name": "Aisha Bello",
+      "bio": "Frontend engineer with 6 years experience.",
+      "topic": "Modern CSS"
+    },
+    {
+      "id": 2,
+      "name": "Michael Adeyemi",
+      "bio": "Fullstack developer and mentor.",
+      "topic": "JavaScript Patterns"
+    },
+    {
+      "id": 3,
+      "name": "Chinwe Okoro",
+      "bio": "Product designer and facilitator.",
+      "topic": "Design Thinking"
+    },
+    {
+      "id": 4,
+      "name": "Samuel Ojo",
+      "bio": "CTO at TechCo.",
+      "topic": "Leadership in Tech"
+    }
+  ]
+}
