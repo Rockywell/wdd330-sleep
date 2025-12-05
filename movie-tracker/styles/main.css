@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  font-family: Inter, sans-serif;
+  background: #0D1321;
+  color: #F5F7FA;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.movie-card {
+  background: #1F2937;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.movie-card:hover { transform: scale(1.05); }
