@@ -1,17 +1,26 @@
-const TMDB_KEY = "YOUR_TMDB_KEY";
-const TMDB_BASE = "https://api.themoviedb.org/3";
+const TMDB_KEY = "YOUR_TMDB_KEY";  // ← Replace with actual key!
+const BASE = "https://api.themoviedb.org/3";
 
-export async function tmdbSearch(query) {
-  const res = await fetch(`${TMDB_BASE}/search/movie?api_key=${TMDB_KEY}&query=${query}`);
-  return res.json();
-}
+const fetchJSON = async url => {
+  try {
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`HTTP ${res.status} - ${url}`);
+    return await res.json();
+  } catch (err) {
+    console.error("TMDB ERROR:", err);
+    return { results: [] };
+  }
+};
 
-export async function tmdbTrending() {
-  const res = await fetch(`${TMDB_BASE}/trending/movie/week?api_key=${TMDB_KEY}`);
-  return res.json();
-}
+export const tmdb = {
+  search: q =>
+    fetchJSON(`${BASE}/search/movie?api_key=${TMDB_KEY}&query=${encodeURIComponent(q)}`),
 
-export async function tmdbDetails(id) {
-  const res = await fetch(`${TMDB_BASE}/movie/${id}?api_key=${TMDB_KEY}&append_to_response=credits,recommendations`);
-  return res.json();
-}
+  trending: () =>
+    fetchJSON(`${BASE}/trending/movie/week?api_key=${TMDB_KEY}`),
+
+  details: id =>
+    fetchJSON(
+      `${BASE}/movie/${id}?api_key=${TMDB_KEY}&append_to_response=credits,recommendations,release_dates`
+    )
+};

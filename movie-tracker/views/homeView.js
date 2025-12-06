@@ -1,12 +1,21 @@
-import { tmdbTrending } from "../api/tmdb.js";
+console.log("HomeView loaded");
+
+import { tmdb } from "../api/tmdb.js";
 import movieCard from "../ui/components/movieCard.js";
 
-export default async function homeView() {
-  const app = document.querySelector("#app");
-  app.innerHTML = `<h2>Trending Movies</h2><div class="grid"></div>`;
+export default function homeView() {
+  // Return HTML FIRST
+  setTimeout(async () => {
+    const { results } = await tmdb.trending();
+    const grid = document.querySelector("#homeGrid");
 
-  const trending = await tmdbTrending();
-  const grid = app.querySelector(".grid");
+    results.forEach(m => grid.append(movieCard(m)));
+  }, 0);
 
-  trending.results.forEach(m => grid.append(movieCard(m)));
+  return `
+    <section class="home">
+      <h2>Trending This Week</h2>
+      <div class="grid" id="homeGrid"></div>
+    </section>
+  `;
 }
